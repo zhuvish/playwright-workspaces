@@ -1,10 +1,8 @@
-# App Verification Skills — Verify Skill Demo
+# App Verification Skills — Verify Skill
 
-This sample showcases the **`verify`** skill — a Copilot CLI skill that drives end-to-end app verification using Playwright Workspaces (PWW) as the cloud browser backend.
+This sample ships the **`verify`** Copilot CLI skill — an end-to-end app verification pipeline that uses Playwright Workspaces (PWW) as the cloud browser backend.
 
-The full demo lives in a standalone public repo so you can clone, run, and watch the skill drive a full QA pass — verify the app, author tests for working flows, heal failing tests, and produce one consolidated report.
-
-> 👉 **Demo repo:** [Ek03ansh/invoice-processing-spark](https://github.com/Ek03ansh/invoice-processing-spark)
+The skill itself lives in [`skills/verify/`](./skills/) next to this README. Drop it into your repo's `.github/skills/` folder and Copilot CLI picks it up automatically — no plugin install, no separate registration.
 
 ## What the verify skill does
 
@@ -16,14 +14,33 @@ The full demo lives in a standalone public repo so you can clone, run, and watch
 
 All test execution happens on Playwright Workspaces cloud browsers — no local browser install required, parallelizable, with video and trace artifacts uploaded for later inspection.
 
-## How it's wired up
+## Install in your repo
 
-The demo repo includes the skill at `.github/skills/verify/`. Copilot CLI **auto-detects** any skill folder placed there — no plugin install, no manual `copilot install …`. Clone the repo, run `copilot` in it, and the skill is immediately invokable:
+Copy the `skills/` folder into your project's `.github/`:
 
 ```bash
-git clone https://github.com/Ek03ansh/invoice-processing-spark.git
-cd invoice-processing-spark
-npm install
+# from the root of your own project
+cp -r path/to/playwright-workspaces/samples/app-verification-skills/skills .github/
+```
+
+Resulting layout:
+
+```
+your-repo/
+└── .github/
+    └── skills/
+        └── verify/
+            ├── SKILL.md
+            └── references/
+                ├── phase-1-app-verification.md
+                ├── phase-2-test-authoring.md
+                ├── phase-3-test-healing.md
+                └── ...
+```
+
+Then run Copilot CLI in your repo and invoke the skill:
+
+```bash
 copilot
 # then: /verify
 ```
@@ -55,5 +72,5 @@ Not for unit tests, API tests, native mobile/desktop apps, load/perf testing, or
 ## More resources
 
 - [Playwright Workspaces docs](https://aka.ms/pww/docs)
-- [Demo repo with the skill in `.github/skills/verify/`](https://github.com/Ek03ansh/invoice-processing-spark)
+
 
