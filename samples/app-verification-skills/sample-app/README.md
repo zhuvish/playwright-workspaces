@@ -2,15 +2,13 @@
 
 A small React + Vite invoice-processing app shipped together with the **`verify`** Copilot CLI skill, so you can see the skill drive a full QA pass on a real app end-to-end.
 
-For the skill on its own (without this app), see the sibling [`../skill/`](../skill/) folder.
-
 ## What's here
 
 | Part | Where |
 |------|-------|
+| **The `verify` skill** | [`.github/skills/verify/`](./.github/skills/verify/) — Copilot CLI auto-detects this when run from this folder. Also the canonical copy users lift into their own repos |
 | **Demo app source** | [`src/`](./src/), [`api/`](./api/) — React + Vite frontend, Azure SWA + Functions backend |
 | **Existing Playwright tests** | [`tests/`](./tests/) — what the verify skill heals + extends |
-| **The `verify` skill** | [`.github/skills/verify/`](./.github/skills/verify/) — Copilot CLI auto-detects this when run from this folder |
 | **App spec** | [`PRD.md`](./PRD.md) — what the app does, screen by screen |
 | **Sample skill outputs** | [`testing-skills.md`](./testing-skills.md), [`report.md`](./report.md), [`skills-comparison.md`](./skills-comparison.md) — what the skill produces on this app |
 | **Screenshots** | [`screenshots/`](./screenshots/) — visual reference |
@@ -49,6 +47,17 @@ copilot
 
 Copilot CLI picks up `.github/skills/verify/` automatically — no plugin install, no manual registration. The skill drives a real browser via Playwright Workspaces, verifies the app's flows, authors new tests for any gaps, classifies and heals failing tests, and produces a consolidated report.
 
+## Lift the skill into your own repo
+
+The skill folder is portable. Copy it into any project:
+
+```bash
+# from the root of your own project
+cp -r path/to/playwright-workspaces/samples/app-verification-skills/sample-app/.github/skills/verify .github/skills/
+```
+
+Then `copilot` → `/verify` works the same way in your repo.
+
 ## Sample outputs
 
 For an example of what the skill produces on this app (without running it yourself), see:
@@ -65,5 +74,5 @@ For an example of what the skill produces on this app (without running it yourse
 
 ## See also
 
-- [The `verify` skill on its own](../skill/) — if you just want the skill files to copy into your own repo
 - [Playwright Workspaces docs](https://aka.ms/pww/docs)
+
