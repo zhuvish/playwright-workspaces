@@ -27,7 +27,7 @@ Explore sample projects for different test runners:
 - [NUnit with C#](./samples/.NET)
 - [Python](./samples/playwright-python/)
 - [Playwright Library projects](./samples/playwright-lib/)
-- [App Testing Agent Skills (verify skill demo)](./samples/app-testing-agent-skills/)
+- [App Verification Skills (verify skill demo)](./samples/app-verification-skills/)
 
 ## Migrating from Microsoft Playwright Testing
 

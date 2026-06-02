@@ -1,6 +1,6 @@
-# App Testing Agent Skills — Verify Skill Demo
+# App Verification Skills — Verify Skill Demo
 
-This sample showcases the **[App Testing Agent (ATA)](https://aka.ms/app-testing-agent)** `verify` skill running end-to-end on a real web app, with Playwright Workspaces (PWW) as the cloud browser backend.
+This sample showcases the **`verify`** skill — a Copilot CLI skill that drives end-to-end app verification using Playwright Workspaces (PWW) as the cloud browser backend.
 
 The full demo lives in a standalone public repo so you can clone, run, and watch the skill drive a full QA pass — verify the app, author tests for working flows, heal failing tests, and produce one consolidated report.
 
@@ -54,6 +54,6 @@ Not for unit tests, API tests, native mobile/desktop apps, load/perf testing, or
 
 ## More resources
 
-- [App Testing Agent docs](https://aka.ms/app-testing-agent)
 - [Playwright Workspaces docs](https://aka.ms/pww/docs)
 - [Demo repo with the skill in `.github/skills/verify/`](https://github.com/Ek03ansh/invoice-processing-spark)
+
