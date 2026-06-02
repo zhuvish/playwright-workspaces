@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "resourceId": "/subscriptions/7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a/resourceGroups/invoice-processing/providers/Microsoft.DocumentDB/databaseAccounts/invoice-processing-cosmos",
+    "region": "centralus",
+    "connectionIdentity": "SystemAssigned",
+    "connectionString": "AccountEndpoint=https://invoice-processing-cosmos.documents.azure.com:443/;Database=InvoiceDB;"
+  }
+}
+{
+  "properties": {
+    "connectionIdentity": "SystemAssigned",
+    "region": "centralus",
+    "configurationFiles": [
+      {
+        "fileName": "staticwebapp.database.config.json",
+        "contents": "{\r\n  \"$schema\": \"https://github.com/Azure/data-api-builder/releases/latest/download/dab.draft.schema.json\",\r\n  \"data-source\": {\r\n    \"database-type\": \"cosmosdb_nosql\",\r\n    \"options\": {\r\n      \"database\": \"InvoiceDB\",\r\n      \"schema\": \"staticwebapp.database.schema.gql\"\r\n    },\r\n    \"connection-string\": \"@env('DATABASE_CONNECTION_STRING')\"\r\n  },\r\n  \"runtime\": {\r\n    \"graphql\": {\r\n      \"allow-introspection\": true,\r\n      \"enabled\": true,\r\n      \"path\": \"/graphql\"\r\n    },\r\n    \"host\": {\r\n      \"mode\": \"production\",\r\n      \"cors\": {\r\n        \"origins\": [\"http://localhost:4280\"],\r\n        \"allow-credentials\": false\r\n      },\r\n      \"authentication\": {\r\n        \"provider\": \"StaticWebApps\"\r\n      }\r\n    }\r\n  },\r\n  \"entities\": {\r\n    \"Invoice\": {\r\n      \"source\": \"Invoices\",\r\n      \"permissions\": [\r\n        {\r\n          \"actions\": [\"create\", \"read\", \"update\", \"delete\"],\r\n          \"role\": \"anonymous\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}\r\n",
+        "type": "configuration"
+      },
+      {
+        "fileName": "staticwebapp.database.schema.gql",
+        "contents": "type Invoice @model {\r\n  id: ID\r\n  vendorName: String\r\n  vendorId: String\r\n  vendorAddress: String\r\n  vendorEmail: String\r\n  invoiceNumber: String\r\n  invoiceDate: String\r\n  dueDate: String\r\n  currency: String\r\n  purchaseOrderRef: String\r\n  billToCompany: String\r\n  billToAddress: String\r\n  billToTaxId: String\r\n  billToEmail: String\r\n  shipToCompany: String\r\n  shipToAddress: String\r\n  shipToContact: String\r\n  lineItems: [LineItem]\r\n  subtotal: Float\r\n  taxPercent: Float\r\n  taxAmount: Float\r\n  totalAmount: Float\r\n  accountName: String\r\n  accountNumber: String\r\n  bankName: String\r\n  paymentMethod: String\r\n  costCentre: String\r\n  expenseCategory: String\r\n  requiresApproval: Boolean\r\n  approver: String\r\n  approvalStatus: String\r\n  status: String\r\n  assignedTo: String\r\n  lastUpdated: String\r\n  createdAt: String\r\n}\r\n\r\ntype LineItem {\r\n  id: String\r\n  description: String\r\n  quantity: Float\r\n  unit: String\r\n  unitPrice: Float\r\n  amount: Float\r\n}\r\n",
+        "type": "graphqlschema"
+      }
+    ],
+    "connectionString": "AccountEndpoint=https://invoice-processing-cosmos.documents.azure.com:443/;",
+    "resourceId": "/subscriptions/7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a/resourceGroups/invoice-processing/providers/Microsoft.DocumentDB/databaseAccounts/invoice-processing-cosmos"
+  }
+}

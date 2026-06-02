@@ -1,0 +1,46 @@
+type Invoice @model {
+  id: ID
+  vendorName: String
+  vendorId: String
+  vendorAddress: String
+  vendorEmail: String
+  invoiceNumber: String
+  invoiceDate: String
+  dueDate: String
+  currency: String
+  purchaseOrderRef: String
+  billToCompany: String
+  billToAddress: String
+  billToTaxId: String
+  billToEmail: String
+  shipToCompany: String
+  shipToAddress: String
+  shipToContact: String
+  lineItems: [LineItem]
+  subtotal: Float
+  taxPercent: Float
+  taxAmount: Float
+  totalAmount: Float
+  accountName: String
+  accountNumber: String
+  bankName: String
+  paymentMethod: String
+  costCentre: String
+  expenseCategory: String
+  requiresApproval: Boolean
+  approver: String
+  approvalStatus: String
+  status: String
+  assignedTo: String
+  lastUpdated: String
+  createdAt: String
+}
+
+type LineItem @model {
+  id: String
+  description: String
+  quantity: Float
+  unit: String
+  unitPrice: Float
+  amount: Float
+}
