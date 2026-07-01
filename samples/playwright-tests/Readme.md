@@ -53,6 +53,35 @@ This sample demonstrates how to run Playwright tests using cloud-hosted browsers
     npx playwright test tests/example.spec.ts --config=playwright.service.config.ts
     ```
 
+## Optional: route tests through an authenticated HTTP proxy
+
+If your tests need to reach a private origin via an authenticated forward
+proxy, use the opt-in `proxy` project defined in [`playwright.config.ts`](./playwright.config.ts).
+It points `testDir` at [`./tests-proxy`](./tests-proxy) and adds `use.proxy`,
+so the default `npx playwright test` command and the existing `tests/` specs
+are unaffected.
+
+1. Set the proxy env vars (in addition to `PLAYWRIGHT_SERVICE_URL`):
+
+    ```powershell
+    $env:PROXY_SERVER   = "http://<your-proxy>:8080"
+    $env:PROXY_USERNAME = "<user>"
+    $env:PROXY_PASSWORD = "<password>"
+    $env:PROXY_ONLY_URL = "http://intranet.example/healthcheck"
+    ```
+
+    `PROXY_ONLY_URL` is the URL [`tests-proxy/proxy.spec.ts`](./tests-proxy/proxy.spec.ts)
+    navigates to so traffic actually traverses the proxy — pick a private
+    origin reachable only through your proxy (spec is skipped if unset).
+
+2. Run only the proxy project:
+
+    ```bash
+    npx playwright test --config=playwright.service.config.ts --project=proxy
+    ```
+
+Playwright handles the proxy 407 challenge using the credentials in `use.proxy`.
+
 ## Need Help?
 
 If you run into issues, open an issue in this repository or refer to the [Playwright Workspaces documentation](https://aka.ms/pww/docs).
