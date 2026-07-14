@@ -2,6 +2,7 @@ import { defineConfig } from '@playwright/test';
 import { createAzurePlaywrightConfig, ServiceOS } from '@azure/playwright';
 import { DefaultAzureCredential } from '@azure/identity';
 import config from './playwright.config';
+import 'dotenv/config';
 
 /* Learn more about service configuration at https://aka.ms/pww/docs/config */
 export default defineConfig(
